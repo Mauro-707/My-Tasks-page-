@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mytasks</title>
+</head>
+
+<body>
+    <!-- Menú común -->
+    <nav>
+        <img id="logo" src="../../static/img/Logo6.png" alt="">
+        <a href="{% url 'web:index' %}">Inicio</a>
+        <a href="{% url 'web:categorias' %}">Categorias</a>
+        <a href="{% url 'web:categorias' %}">Finalizadas</a>
+
+        <a href="">Ajustes</a>
+        </nav>
+
+            <!-- Contenido específico de cada página -->
+            <main>
+                {% block content %}
+                {% endblock %}
+            </main>
+</body>
+
+</html>

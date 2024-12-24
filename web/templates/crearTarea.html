@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+
+
+{% block content %}
+<div class="contenedor">
+    <div class="formulario"  ">
+        <form method="post" action="{% url 'web:creartarea' %}">
+            {% csrf_token %}
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" id="titulo" required>
+            
+            <label for="dia">Día:</label>
+            <select name="dia" id="dia">
+                {% for dia in dias %}
+                <option value="{{ dia.id }}">{{ dia.nombre }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" id="categoria">
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="subtarea">subtarea</label>
+            <input type="text" name="subtarea" id="subtarea">
+            
+            <button type="submit">Crear Tarea</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "./base.html" %}
+
+{% block content %}
+    <div class="contenedor">
+        <div class="dia">
+            <div class="encabezado">
+                <p>Pendientes</p>
+            </div>
+            {% for tarea in tareas%}
+                <div class="tarea">
+                    <p>{{tarea.titulo}} - {{tarea.categoria}}</p>
+                </div>
+            {% endfor%}
+        </div>
+        <div class="dia">
+            <div class="encabezado">
+                <p>En progreso</p>
+            </div>
+        </div>
+        <div class="dia">
+            <div class="encabezado">
+                <p>Finalizadas</p>
+            </div>
+            <div class="tarea">
+                <p>Esta es mi tarea</p>
+            </div>
+        </div>
+        
+
+        <div class="bon" >
+            <button>
+                <a href="{% url 'web:creartarea' %}">crear</a>
+        
+            </button>
+        </div>
+        
+
+    </div>
+
+{% endblock %}
