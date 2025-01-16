@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="contenedor">
-    <div class="formulario"  ">
+    <div class="formulario"  >
         <form method="post" action="{% url 'web:creartarea' %}">
             {% csrf_token %}
             <label for="titulo">Título:</label>

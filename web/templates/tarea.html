@@ -2,7 +2,17 @@
 {% block content %}
     <div class="contenedor">
         <p>{{tarea.titulo}}</p>
+        <br>
+        <p>{{tarea.dia}}</p>
+        
+        {% for tareas in subtareas%}
+            <p>{{tareas.titulo}}</p>
+        {% endfor%}
 
+        <form method="post" action="{% url 'web:eliminartarea' tarea_id=tarea.id %}" style="display:inline;">
+            {% csrf_token %}    
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
     </div>
 
 {% endblock %}

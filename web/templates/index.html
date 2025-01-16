@@ -7,8 +7,9 @@
                 <p>Pendientes</p>
             </div>
             {% for tarea in tareas%}
+                
                 <div class="tarea">
-                    <p>{{tarea.titulo}} - {{tarea.categoria}}</p>
+                    <a href="{% url 'web:tarea' tarea_id=tarea.id%}">{{tarea.titulo}} - {{tarea.categoria}}</a>
                 </div>
             {% endfor%}
         </div>
@@ -21,9 +22,7 @@
             <div class="encabezado">
                 <p>Finalizadas</p>
             </div>
-            <div class="tarea">
-                <p>Esta es mi tarea</p>
-            </div>
+          
         </div>
         
 
