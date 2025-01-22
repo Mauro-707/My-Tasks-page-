@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404,redirect
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.http import HttpResponse
 from .models import Tarea, Categoria, subTarea,Dia
 # Create your views here.
@@ -57,21 +59,53 @@ def editartarea(request,tarea_id):
     tarea = get_object_or_404(Tarea,pk=tarea_id)
     if request.method == 'POST':
         tarea.titulo = request.POST.get('titulo')
-        tarea.dia = request.POST.get('dia')
-        tarea.categoria = request.POST.get('categoria')
         tarea.save()
+        
+        dia_id = request.POST.get('dia')
+        dia = Dia.objects.get(pk=dia_id)
+        
+        categoria_id = request.POST.get('categoria')
+        categoria = Categoria.objects.get(pk=categoria_id)
 
+        tarea.categoria = categoria
+        tarea.dia = dia
+        tarea.save()
         #campos de subtareas
-        titulos = request.POST.getlist('subtitulo')
-        estado = request.POST.getlist('subestado')
+        titulos = request.POST.getlist('subtarea_nombre')
+        #estado = request.POST.getlist('subestado')
 
-        for titulo,estado in zip(titulos,estado):
+        for titulo in zip(titulos):
             if titulo: #evita tareas vacias
                 subTarea.objects.create(
                     tarea = tarea,
                     titulo = titulo,
-                    estado = estado
+                    #estado = estado
                 )
+        
+    
+    tarea = get_object_or_404(Tarea,pk=tarea_id)
+    subtareas = subTarea.objects.filter(tarea = tarea)
+    dias = Dia.objects.all()
+    categorias = Categoria.objects.all()
+    context = {
+        'tarea' : tarea,
+        'subtareas': subtareas,
+        'dias':dias,
+        'categorias':categorias
+    }
+    return render(request, 'editartarea.html',context)
+   
 
+
+    
 def categorias(request):
     return render(request, 'categorias.html')
+
+def eliminar_tarea(request,tarea_id):
+    if request.method == 'POST':
+        tarea = get_object_or_404(Tarea,pk=tarea_id)
+        tarea.delete()
+        return JsonResponse({'success': True, 'message': 'Tarea eliminada correctamente'})
+    return JsonResponse({'success': False, 'message': 'Método no permitido'}, status=405)
+
+        

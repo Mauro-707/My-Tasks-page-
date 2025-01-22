@@ -1,0 +1,88 @@
+{% extends "./base.html" %}
+{% block content %}
+    <div class="contenedor">
+        <form method="POST">
+            {% csrf_token %}
+        
+            <h3>Editar Tarea</h3>
+            <label for="titulo">titulo:</label>
+            <input type="text" id="titulo" name="titulo" value="{{ tarea.titulo }}">
+        
+            <label for="dia">Día:</label>
+            <select name="dia" id="dia">
+                <!--<option value="tarea.dia.id" selected>{{tarea.dia}}</option>-->
+                {% for dia in dias %}
+                <option value="{{ dia.id }}">{{ dia.nombre }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" id="categoria">
+                <!--<option  value="{{tarea.categoria.id}}" selected>{{tarea.categoria}}</option>-->
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
+            </select>
+        
+            <h3>Sub-tareas</h3>
+            <div id="familiares">
+
+                
+                {% for subtarea in subtareas%}
+                    <p>{{subtarea.id}}</p>
+                    <button onclick="eliminarTarea('{{ tarea.id }}')">Eliminar tarea</button>
+
+                    {% endfor %}
+                {% for familiar in familiares %}
+                    <div class="familiar">
+                        <label>subtarea:</label>
+                        <input type="text" name="subtarea_nombre" value="{{ familiar.nombre }}">
+        
+                        
+                    </div>
+                {% endfor %}
+            </div>
+        
+            <button type="button" id="add-familiar">Agregar sub_tarea</button>
+        
+            <button type="submit">Guardar cambios</button>
+        </form>
+        
+        <script>
+            // Script para agregar nuevos campos de familiares dinámicamente
+            document.getElementById('add-familiar').addEventListener('click', function() {
+                const familiaresDiv = document.getElementById('familiares');
+                const newFamiliar = `
+                    <div class="familiar">
+                        <label>Sub tarea:</label>
+                        <input type="text" name="subtarea_nombre" value="">
+                    </div>
+                `;
+                familiaresDiv.insertAdjacentHTML('beforeend', newFamiliar);
+            });
+            function eliminarTarea(tareaId) {
+                if (confirm("¿Estás seguro de que deseas eliminar esta tarea?")) {
+                    fetch(`/eliminar_tarea/${tareaId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}', // Agrega el token CSRF
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message); // Mensaje de éxito
+                            location.reload();   // Recargar la página para reflejar los cambios
+                        } else {
+                            alert(data.message); // Mensaje de error
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            }
+        </script>
+        
+    </div>
+
+{% endblock %}
