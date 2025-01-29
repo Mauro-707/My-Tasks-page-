@@ -1,0 +1,83 @@
+.container{
+    width: 80vw;
+    height: 100%;
+    overflow-x: auto;
+    min-width: 800px;
+    display: inline-flex;
+
+    .dia{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        border: 0.5px solid rgba(190, 190, 190, 0.171);
+        gap: 10px;
+        .encabezado{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            width: 100%;
+            height: 40px;
+
+            border: 0.5px solid rgba(190, 190, 190, 0.171);
+
+        }
+
+
+        .Tarea{
+            position: relative;
+            
+            width: 95%; 
+            height: 170px;
+            
+            background-color: rgb(37, 37, 37);
+            border-radius: 15px;
+            border: 0.2px solid  rgb(53, 53, 53);
+            
+            cursor: pointer;
+            
+            img{
+                width: 100%;
+                height: 70%;
+                
+                border-radius: 15px 15px 0px 0px;
+            }
+
+
+            /*SPAN*/
+            .texto{
+                width: auto;
+                margin-inline: 7px;
+                
+                white-space: nowrap;       /* Evita que el texto haga un salto de línea */
+                overflow: hidden;          /* Oculta el texto que exceda el contenedor */
+                text-overflow: ellipsis;   /* Agrega "..." al final del texto truncado */
+                             /* Define el ancho del contenedor */
+            }
+            .menu{
+                position: absolute;
+                left: 0;
+                bottom: 0%;
+                
+                width: 100%;
+                text-align: center;
+                
+                border-radius: 0px 0px 15px 15px;
+                
+                img{
+                    width: 15px;
+                    height: 15px;
+
+                    color: white;
+                }
+            }
+            .menu:hover{
+                background-color: rgb(53, 53, 53);
+            }
+        }
+
+
+    }
+}

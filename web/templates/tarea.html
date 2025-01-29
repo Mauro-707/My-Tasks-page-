@@ -1,18 +1,82 @@
 {% extends "./base.html" %}
 {% block content %}
-    <div class="contenedor">
-        <p>{{tarea.titulo}}</p>
-        <br>
-        <p>{{tarea.dia}}</p>
-        
-        {% for tareas in subtareas%}
-            <p>{{tareas.titulo}}</p>
-        {% endfor%}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/tarea.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="tarea_container">
+            <div class="seccion1">
+                <img id="tarea_img" src="../static/img/prueba.png" alt="">
+                <div class="part1">
+                    <h2>Mi tarea</h2>
+                    <img src="../static/img/time-svgrepo-com.svg" alt="">
+                </div>
+                <br>
+                <span style="color: gray;"><b>Descripcion</b></span>
+                <p>mi tarea es tyerminar esta  pagina XD para mostrar lo crack que soy jaajaj y ahora relleno como naruto aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                
+                <div class="subtarea">
+                    <h3>Subtareas</h3>
+                    <div class="sub">
+                        <input type="checkbox">
+                        <h4>subtarea</h4>
+                    </div>
+                    <div class="sub">
+                        <input type="checkbox">
+                        <h4>subtarea</h4>
+                    </div>
+                </div>
 
-        <form method="post" action="{% url 'web:eliminartarea' tarea_id=tarea.id %}" style="display:inline;">
-            {% csrf_token %}    
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-        </form>
-    </div>
+            </div>
+            <div class="seccion2">
+                <div class="botones">
+                    <button id="btn1"><img src="../static/img/edit-2-svgrepo-com.svg" alt=""></button>
+                    <button id="btn2"><img src="../static/img/delete-2-svgrepo-com.svg" alt=""></button>
+                </div>
+
+                <div class="miembros">
+                    <span style="color: gray;"><b>Miembros</b></span>
+                    <div class="usuarios">
+                        <div class="usuario">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                              
+                        </div>
+                        <div class="usuario">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                              
+                        </div>
+                    </div>
+                </div>
+                <div class="info">
+                    <span style="color: gray;"><b>Fecha</b></span>
+                    <div class="fecha">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+                        </svg>
+                        
+                        <p>03-03-2025</p>
+                        <p>03-04-2025</p>
+                    </div>
+                </div>
+
+                <div class="prioridad">
+                    <span style="color: gray;"><b>Prioridad</b></span>
+                    <div class="tipo">
+                        <div class="color"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
 
 {% endblock %}

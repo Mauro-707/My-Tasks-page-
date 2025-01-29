@@ -7,7 +7,7 @@ class Tarea(models.Model):
     dia = models.ForeignKey('Dia', on_delete=models.CASCADE, blank=True, null=True )
 
     categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, blank=True, null=True )
-
+    
     class Meta:
         verbose_name = "Tarea"
         verbose_name_plural = "Tareas"

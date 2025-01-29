@@ -1,39 +1,59 @@
-{% extends "./base.html" %}
-
-{% block content %}
-    <div class="contenedor">
-        <div class="dia">
-            <div class="encabezado">
-                <p>Pendientes</p>
+{% extends "./base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/inde.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="dia">
+        <div class="encabezado">
+          <h4>Encabezado</h4>
+        </div>
+        {% for tarea in tareas%}
+        <a style="all: unset;" id="link" href="{% url 'web:tarea' tarea_id=tarea.id%}">
+          <div class="Tarea">
+            <img src="../static/img/prueba.png" alt="" />
+            <div class="texto">
+              <h4>{{tarea.titulo}}</h4>
             </div>
-            {% for tarea in tareas%}
-                
-                <div class="tarea">
-                    <a href="{% url 'web:tarea' tarea_id=tarea.id%}">{{tarea.titulo}} - {{tarea.categoria}}</a>
-                </div>
-            {% endfor%}
+            <span class="menu">
+              <img src="../static/img/menu-svgrepo-com.svg" alt="" />
+            </span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="dia">
+        <div class="encabezado">
+          <h4>Encabezado</h4>
         </div>
-        <div class="dia">
-            <div class="encabezado">
-                <p>En progreso</p>
-            </div>
+        <div class="Tarea">
+          <img src="../static/img/prueba.png" alt="" />
         </div>
-        <div class="dia">
-            <div class="encabezado">
-                <p>Finalizadas</p>
-            </div>
-          
+      </div>
+      <div class="dia">
+        <div class="encabezado">
+          <h4>Encabezado</h4>
         </div>
-        
-
-        <div class="bon" >
-            <button>
-                <a href="{% url 'web:creartarea' %}">crear</a>
-        
-            </button>
+        <div class="Tarea"></div>
+        <div class="Tarea"></div>
+        <div class="Tarea"></div>
+      </div>
+      <div class="dia">
+        <div class="encabezado">
+          <h4>Encabezado</h4>
         </div>
-        
-
+        <div class="Tarea"></div>
+        <div class="Tarea"></div>
+        <div class="Tarea"></div>
+      </div>
     </div>
 
+    <script></script>
+  </body>
+</html>
 {% endblock %}

@@ -11,6 +11,6 @@ urlpatterns = [
     path('creartarea/',views.creartarea, name='creartarea'),    
     path('eliminartarea/<int:tarea_id>',views.eliminartarea, name='eliminartarea'),
     path('editartarea/<int:tarea_id>',views.editartarea, name='editartarea'),
-    path('eliminar_tarea/<int:tarea_id>', views.eliminar_tarea, name='eliminar_tarea')
+    path('eliminartarea/<int:tarea_id>', views.eliminartarea, name='eliminar_tarea')
         
 ]

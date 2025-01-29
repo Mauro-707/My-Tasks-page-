@@ -5,7 +5,7 @@
     margin: 0;
 }
 body{
-    background-color:#000020;
+    background-color:#0c0c0c;
     display: flex;
     font-family: Signika;
     color: rgb(235, 221, 221);
@@ -37,45 +37,4 @@ nav{
         transform: translateX(10px); /* Mueve 10px hacia la derecha */
         color: #2f2c79; /* Cambia el color del texto al pasar el cursor */
       }
-}
-
-.contenedor{
-    height: 100%;
-    width: 82vw;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    
-    .dia{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-        .encabezado{
-            height: 40px;
-            background-color: #171a4a;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-        }
-        .tarea{
-            display: flex;
-            
-            align-items: center;
-            
-            width: 90%;
-            height: 40px;
-            background-color: #2f2c79;
-            border-radius: 10px;
-            padding: 2%;
-            margin: 2%;
-        }
-    }
-}
-
-.bon{
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
 }

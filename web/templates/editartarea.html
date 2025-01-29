@@ -30,7 +30,7 @@
                 
                 {% for subtarea in subtareas%}
                     <p>{{subtarea.id}}</p>
-                    <button onclick="eliminarTarea('{{ tarea.id }}')">Eliminar tarea</button>
+                    <button onclick="eliminarTarea('{{ subtarea.id }}')">Eliminar tarea</button>
 
                     {% endfor %}
                 {% for familiar in familiares %}
@@ -62,7 +62,7 @@
             });
             function eliminarTarea(tareaId) {
                 if (confirm("¿Estás seguro de que deseas eliminar esta tarea?")) {
-                    fetch(`/eliminar_tarea/${tareaId}/`, {
+                    fetch(`/eliminartarea/${tareaId}`, {
                         method: 'POST',
                         headers: {
                             'X-CSRFToken': '{{ csrf_token }}', // Agrega el token CSRF

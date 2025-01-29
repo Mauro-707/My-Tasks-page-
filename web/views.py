@@ -101,10 +101,11 @@ def editartarea(request,tarea_id):
 def categorias(request):
     return render(request, 'categorias.html')
 
-def eliminar_tarea(request,tarea_id):
+def eliminartarea(request,tarea_id):
     if request.method == 'POST':
-        tarea = get_object_or_404(Tarea,pk=tarea_id)
-        tarea.delete()
+        sub_tarea = get_object_or_404(subTarea,pk=tarea_id)
+        
+        sub_tarea.delete()
         return JsonResponse({'success': True, 'message': 'Tarea eliminada correctamente'})
     return JsonResponse({'success': False, 'message': 'Método no permitido'}, status=405)
 

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins" serif;
+}
+.tarea_container{
+    background-color: rgb(12, 10, 10);
+    width: 80vw;
+    height: 100%;
+    overflow-x: auto;
+    min-width: 800px;
+    display: inline-flex;
+
+
+    .seccion1{
+        width: 60%;
+        padding: 1%;
+        gap: 5px;
+        #tarea_img{
+            width: 100%;
+            height: 100%;             /* La imagen ocupa el 90% del ancho del div */
+            height: auto;            /* Mantener la proporción de la imagen */
+            display: block;          /* Evita el espacio en línea debajo de la imagen */
+            margin: 0 auto; 
+            padding-bottom: 2%;         /* (Opcional) Centrar la imagen dentro del div */
+            border-radius: 15px;
+        }
+
+        .part1{                                                                                                                                     
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2%;
+            img{
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        .subtarea{
+            padding-top: 3%;
+            .sub{
+                display: flex;
+                flex-direction: row;
+
+                padding: 2%;
+                
+                border-radius: 15px;
+                gap: 20px;
+                
+            }
+        }
+    }
+    .seccion2{
+        padding: 1%;
+        width: 40%;
+        position: relative;
+
+        .botones{
+            display: flex;
+            justify-content: center;
+            gap: 2%;
+            width: 100%;
+            padding-bottom: 2%;
+            #btn1, #btn2{
+                all: unset;
+                padding: 2%;
+                cursor: pointer;
+                border-radius: 10px;
+                img{
+                    max-width: 23px;
+                    
+                }
+            }
+            #btn1{
+                background-color: green;
+            }
+            #btn2{
+                background-color: red;
+            }
+        }
+
+
+        .miembros{
+            margin-bottom: 2%;
+            .usuarios{
+                display: flex;
+                .usuario{
+                    display: flex;
+                    width: fit-content;
+                    padding: 1%;
+                    margin: 1%;
+                    border: 0.5px solid gray;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .info{
+            margin-bottom: 2%;
+            .fecha{
+                margin: 1%;
+                display: flex;
+                align-items: center;
+                gap: 2%;
+                #input_fecha{
+                    all: unset;
+                }
+            }
+        }
+
+        .prioridad{
+            .tipo{
+                margin: 2%;
+                .color{
+                    
+                    width: 20px;
+                    height: 20px;
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
